@@ -3,9 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Meta  -->
-    <!-------- faveIcon -------->
-
     <!-- Font Awsome -->
     <link rel="stylesheet" href="./css/all.min.css" />
     <!-- BootStrap  -->
@@ -43,7 +40,7 @@
 
               <form id="msform">
                 <!-- progressbar -->
-                <ul id="progressbar">
+                <ul class="p-0" id="progressbar">
                   <li class="active" id="account">
                     <strong>Account</strong>
                   </li>
@@ -185,23 +182,31 @@
                     <br /><br />
                     <div class="row justify-content-center">
                       <div class="col-7 text-center">
-                      
                         <a
                           id="backtologin"
-                          class="w-100 btn btn-outline-primary d-block"
+                          class="w-100 btn btn-outline-primary d-block mb-4"
                         >
                           Sign In
+                        </a>
+                        <a id="gologin" class="w-100 btn btn-primary d-block">
+                          Log In
                         </a>
                       </div>
                     </div>
                   </div>
                 </fieldset>
-                <button class="next btn btn-outline-primary action-button">
-                  Next
-                </button>
-                <button class="prev action-button btn btn-outline-dark d-none">
-                  Prev
-                </button>
+                <div class="bnts">
+                  <button class="next btn btn-outline-primary action-button">
+                    Next
+                  </button>
+                  <button
+                    class="prev action-button btn btn-outline-dark d-none"
+                  >
+                    Prev
+                  </button>
+
+                  <div class="clearfix"></div>
+                </div>
                 <p id="emptyvalue" class="text-danger"></p>
 
                 <!-- action-button-previous -->

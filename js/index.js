@@ -14,14 +14,19 @@ logInBtn.addEventListener('click', (e) => {
   if (data != null) {
     for (let i = 0; i < data.length; i++) {
       if (
-        data[i].email == yourEmail.value &&
+        data[i].email === yourEmail.value &&
         data[i].password === yourPassword.value
       ) {
-        localStorage.setItem('usersetion', JSON.stringify(data));
-        window.location = '/home.html';
+        localStorage.setItem('usersetion', JSON.stringify(data[i]));
+        console.log(localStorage.getItem('usersetion'));
+        messageWorring.classList.replace('text-danger', 'text-success');
+        messageWorring.innerHTML = 'Processing your request';
+        setTimeout(() => {
+          window.location = '/home.html';
+        }, 2000);
       }
       if (
-        data[i].email != yourEmail.value ||
+        data[i].email != yourEmail.value &&
         data[i].password != yourPassword.value
       ) {
         messageWorring.innerHTML =
@@ -46,4 +51,5 @@ logInBtn.addEventListener('click', (e) => {
     messageWorring.innerHTML =
       "you haven't signed up yet. Please create an account";
   }
+
 });

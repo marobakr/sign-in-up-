@@ -15,6 +15,7 @@ let progressBar = document.querySelector('.progress-bar');
 let phone = document.getElementById('number');
 let altPhone = document.getElementById('altnumber');
 let uploadImage = document.getElementById('upload');
+let goLogIn = document.getElementById('gologin');
 let valueOfAllInputsNotEmptyHaveAlreadySignUp =
   document.getElementById('emptyvalue');
 let allUsers = [];
@@ -79,6 +80,7 @@ btnNext.addEventListener('click', function (e) {
 
 //  back to another form
 btnPrev.addEventListener('click', function (e) {
+  e.preventDefault();
   switch (prevOrNext) {
     case 2:
       progressGrow = 50;
@@ -156,16 +158,12 @@ signIn.addEventListener('click', (e) => {
           'You Have Successfully Signed Up';
         addUser();
       }
-      if (countToCheck >= 1) {
-        signIn.innerHTML = 'Log In';
-
-        // Set a timeout of 5 minutes (300,000 milliseconds)
-        setTimeout(function () {
-          window.location.href = '/';
-        }, 200);
-      }
     });
   } else {
     addUser();
   }
+});
+
+goLogIn.addEventListener('click', () => {
+  window.location.href = '/';
 });

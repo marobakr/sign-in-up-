@@ -44,12 +44,11 @@ body {
 }
 
 #msform .action-button {
-  width: 100px;
+  width: 100%;
   font-weight: bold;
   cursor: pointer;
   padding: 10px 5px;
   margin: 10px 0px 10px 5px;
-  float: right;
 }
 
 .card {
