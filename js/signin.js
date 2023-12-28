@@ -162,6 +162,8 @@ function addUser() {
 
 signIn.addEventListener('click', (e) => {
   e.preventDefault();
+  addUser();
+
   valueOfAllInputsNotEmptyHaveAlreadySignUp.innerHTML =
     'You Have Successfully Signed Up';
   if (allUsers.length >= 1) {
@@ -179,7 +181,6 @@ signIn.addEventListener('click', (e) => {
       }
     });
   }
-  addUser();
   console.log(allUsers);
 });
 
