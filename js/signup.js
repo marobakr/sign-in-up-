@@ -133,7 +133,9 @@ function addUser() {
     };
 
     // Assuming user is defined somewhere in your code
-
+    let x=  allUsers.filter((item) => {
+       return user.email != item.email
+      })
     if (allUsers.length >= 1) {
       let emailExists = false;
       allUsers.forEach((person) => {
