@@ -28,7 +28,6 @@ let imageSrc;
 if (localStorage.getItem('users') !== null) {
   allUsers = JSON.parse(localStorage.getItem('users'));
 }
-console.log(localStorage.getItem('users'));
 //  swapp to another form
 btnNext.addEventListener('click', function (e) {
   e.preventDefault();
@@ -132,17 +131,39 @@ function addUser() {
       lastName: lastName.value,
       image: result,
     };
-    allUsers.push(user);
-    localStorage.setItem('users', JSON.stringify(allUsers));
+
+    // Assuming user is defined somewhere in your code
+
+    if (allUsers.length >= 1) {
+      let emailExists = false;
+      allUsers.forEach((person) => {
+        // Check if the email already exists in the array
+        if (person.email === email.value) {
+          console.log('Email already exists');
+          // Set the flag to true if the email exists
+          emailExists = true;
+        }
+      });
+
+      // If the flag is false, it means the email doesn't exist, so add the user
+      if (!emailExists) {
+        console.log('Adding user');
+        allUsers.push(user);
+        localStorage.setItem('users', JSON.stringify(allUsers));
+      }
+    } else {
+      // If the array is empty, simply add the user
+      console.log('Adding user');
+      allUsers.push(user);
+      localStorage.setItem('users', JSON.stringify(allUsers));
+    }
   });
 }
 
 signIn.addEventListener('click', (e) => {
-  let countToCheck = 0;
   e.preventDefault();
-  console.log(allUsers.length >= 0);
-  console.log(allUsers);
-
+  valueOfAllInputsNotEmptyHaveAlreadySignUp.innerHTML =
+    'You Have Successfully Signed Up';
   if (allUsers.length >= 1) {
     allUsers.forEach((user) => {
       if (user.email === email.value) {
@@ -150,18 +171,16 @@ signIn.addEventListener('click', (e) => {
           'text-success',
           'text-danger'
         );
-        ++countToCheck;
         valueOfAllInputsNotEmptyHaveAlreadySignUp.innerHTML =
           'this email already exite';
       } else {
         valueOfAllInputsNotEmptyHaveAlreadySignUp.innerHTML =
           'You Have Successfully Signed Up';
-        addUser();
       }
     });
-  } else {
-    addUser();
   }
+  addUser();
+  console.log(allUsers);
 });
 
 goLogIn.addEventListener('click', () => {
